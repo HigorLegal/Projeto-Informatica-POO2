@@ -117,6 +117,7 @@ public Usuario usu;
         lblNome1.setText("Nome");
 
         lblIcone1.setBackground(new java.awt.Color(102, 102, 102));
+        lblIcone1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/104493_linkedin_icon.png"))); // NOI18N
         lblIcone1.setMaximumSize(new java.awt.Dimension(80, 80));
         lblIcone1.setMinimumSize(new java.awt.Dimension(80, 80));
 
@@ -475,7 +476,12 @@ public Usuario usu;
         this.dispose();
         new FrAutenticacao().setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
-
+    //lblIcone1
+    public void pipo(){
+        URL caminhoImagem = getClass().getResource("/images/gear_manpx.png");
+        ImageIcon Icon = new ImageIcon(caminhoImagem);
+        lblIcone1.setIcon(Icon);
+    }
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
         URL caminhoImagem = getClass().getResource("/images/logo.png");
@@ -483,9 +489,10 @@ public Usuario usu;
         ImageIcon Icon = new ImageIcon(caminhoImagem);
 
         this.setIconImage(Icon.getImage());
-         setTitle("Sistema de Gerenciamento de Usuarios - Menu");
+         setTitle("Sistema de Compra do Usuario - Catalogo");
          
          carregar();
+         pipo();
     }//GEN-LAST:event_formWindowOpened
 
     private void jMenuItem1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseClicked
@@ -579,18 +586,15 @@ public Usuario usu;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lbNome;
     private javax.swing.JLabel lblIcone1;
-    private javax.swing.JLabel lblIcone11;
     private javax.swing.JLabel lblIcone2;
     private javax.swing.JLabel lblIcone3;
     private javax.swing.JLabel lblIcone4;
     private javax.swing.JLabel lblIcone5;
     private javax.swing.JLabel lblIcone6;
     private javax.swing.JLabel lblNome1;
-    private javax.swing.JLabel lblNome11;
     private javax.swing.JLabel lblNome2;
     private javax.swing.JLabel lblNome3;
     private javax.swing.JLabel lblNome4;
