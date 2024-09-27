@@ -1,0 +1,26 @@
+
+create database if not exists dbprojeto;
+use dbprojeto;
+
+create table if not exists tbusuario (
+    	pkusuario int not null primary key auto_increment,
+    	nome varchar (60),
+    	email varchar (40) unique not null,
+    	senha varchar (40) not null,
+    	ativo boolean default true,
+    	image BLOB(5242880)
+);
+create table if not exists tbproduto(
+    	pkproduto int not null primary key auto_increment,
+   	nome varchar (60),
+   	valor decimal(10,2),
+    	image BLOB(5242880)
+);
+create table if not exists tbpedido(
+   	pkpedido int not null primary key auto_increment,
+   	fkusuario int,
+   	fkproduto int,
+     	foreign key(fkusuario) references tbusuario(pkusuario),
+	foreign key(fkproduto) references tbproduto(pkproduto)
+);
+
