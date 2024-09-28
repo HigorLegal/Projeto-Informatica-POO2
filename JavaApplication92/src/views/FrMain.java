@@ -725,5 +725,5 @@ public class FrMain extends javax.swing.JFrame {
     private javax.swing.JPanel pnl5;
     private javax.swing.JPanel pnl6;
     // End of variables declaration//GEN-END:variables
-
+//
 }
