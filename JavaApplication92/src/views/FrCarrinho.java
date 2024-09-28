@@ -51,7 +51,7 @@ public class FrCarrinho extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        grdUsuario = new javax.swing.JTable();
+        grdPedido = new javax.swing.JTable();
         BtnPesquisar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -83,26 +83,27 @@ public class FrCarrinho extends javax.swing.JDialog {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/2093656_seach_look_search_see_icon.png"))); // NOI18N
         jLabel1.setText("Carrinho");
 
-        grdUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        grdUsuario.setModel(new javax.swing.table.DefaultTableModel(
+        grdPedido.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        grdPedido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        grdPedido.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "codigo", "codigo Produto", "produto", "valor"
+                "codigo", "produto", "valorP"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.Double.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -113,7 +114,7 @@ public class FrCarrinho extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(grdUsuario);
+        jScrollPane1.setViewportView(grdPedido);
 
         BtnPesquisar.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         BtnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/2093656_seach_look_search_see_icon.png"))); // NOI18N
@@ -146,7 +147,7 @@ public class FrCarrinho extends javax.swing.JDialog {
         });
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/9036010_trash_bin_sharp_icon.png"))); // NOI18N
-        jButton5.setText("Excluir");
+        jButton5.setText("Retirar do Carrinho");
         jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -166,7 +167,7 @@ public class FrCarrinho extends javax.swing.JDialog {
                 .addGap(152, 152, 152)
                 .addComponent(BtnPesquisar)
                 .addGap(111, 111, 111)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton5)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -262,34 +263,31 @@ public class FrCarrinho extends javax.swing.JDialog {
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         this.dispose();
-        new FrMain().setVisible(true);
     }//GEN-LAST:event_jButton2MouseClicked
     private void pesquisar() {
 
 //pega o modelo da grade com suas colunas
-        DefaultTableModel modelo = (DefaultTableModel) grdUsuario.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) grdPedido.getModel();
 //cooloca 
         modelo.setNumRows(0);
 
         PedidoController controller = new PedidoController();
 
        
-     
-listarPedidos()=
-        //loop para adicionar todos os usuarios encontrados
-       for (Pedido ped : listaPedidos) {
+List<Pedido> lista = controller.listarpedidos(1);
 
+        //loop para adicionar todos os usuarios encontrados
+        for (Pedido ped : lista) {
             Object[] linha = {
                 ped.getPkpedido(),
-                ped.getFkproduto(),
-
+                ped.getNomeP(),
+                ped.getValorP()
             };
-                    }
-            //coloca o Array com os atributos do usuario na lista
-           modelo.addRow(linha);
         
+            //coloca o Array com os atributos do usuario na lista
+            modelo.addRow(linha);
+        }
 
-    
     }
     /**
      * @param args the command line arguments
@@ -336,7 +334,7 @@ listarPedidos()=
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnPesquisar;
-    private javax.swing.JTable grdUsuario;
+    private javax.swing.JTable grdPedido;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton5;
