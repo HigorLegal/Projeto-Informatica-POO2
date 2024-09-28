@@ -13,8 +13,7 @@ create table if not exists tbusuario (
 create table if not exists tbproduto(
     	pkproduto int not null primary key auto_increment,
    	nome varchar (60),
-   	valor decimal(10,2),
-    	image BLOB(5242880)
+   	valor decimal(10,2)
 );
 create table if not exists tbpedido(
    	pkpedido int not null primary key auto_increment,
@@ -23,4 +22,15 @@ create table if not exists tbpedido(
      	foreign key(fkusuario) references tbusuario(pkusuario),
 	foreign key(fkproduto) references tbproduto(pkproduto)
 );
+
+
+/*colocando os produtos*/
+insert into tbproduto(nome,valor)value("mouse de madeira ",12.2);
+insert into tbproduto(nome,valor)value("kit Gamer",1000.00);
+insert into tbproduto(nome,valor)value("teclado ultimate",129.00);
+insert into tbproduto(nome,valor)value("monitor curvado",559.00);
+insert into tbproduto(nome,valor)value("Headset gamer",159.00);
+insert into tbproduto(nome,valor)value("pc gamer completo",1159.00);
+
+
 
