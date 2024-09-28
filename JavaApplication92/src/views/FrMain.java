@@ -6,10 +6,15 @@
 package views;
 
 import controller.UsuarioController;
+import java.io.File;
 import java.net.URL;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import model.Usuario;
+import static utils.Utils.RedirecionarIcon;
 
 /**
  *
@@ -475,16 +480,29 @@ public Usuario usu;
         this.dispose();
         new FrAutenticacao().setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
-
+    
+    private void pipo(){
+    //set caminho
+    URL cami = getClass().getResource("/images/logo.png");
+    
+    //get imagem no caminho
+    ImageIcon img = new ImageIcon (cami);
+    
+    //redimensiona a imagem
+    RedirecionarIcon(img,80,80);
+    
+    
+    }
+    
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-
+        pipo();
         URL caminhoImagem = getClass().getResource("/images/logo.png");
-
+        
         ImageIcon Icon = new ImageIcon(caminhoImagem);
 
         this.setIconImage(Icon.getImage());
          setTitle("Sistema de Gerenciamento de Usuarios - Menu");
-         
+        
          carregar();
     }//GEN-LAST:event_formWindowOpened
 
@@ -516,10 +534,14 @@ public Usuario usu;
         a.setVisible(true);
     }//GEN-LAST:event_jLabel2MouseClicked
 
+
+    
+    
+    
     private void carregar(){
         
         UsuarioController controller = new UsuarioController();
-      usu =  controller.buscaEmail(usu.getEmail()) ;
+      /*usu =  controller.buscaEmail(usu.getEmail()) ;*/
 
      //  JOptionPane.showMessageDialog(null,"."+ usu.getEmail()+".");
       //  JOptionPane.showMessageDialog(null,"."+ usu.getNome()+".");
@@ -579,18 +601,15 @@ public Usuario usu;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lbNome;
     private javax.swing.JLabel lblIcone1;
-    private javax.swing.JLabel lblIcone11;
     private javax.swing.JLabel lblIcone2;
     private javax.swing.JLabel lblIcone3;
     private javax.swing.JLabel lblIcone4;
     private javax.swing.JLabel lblIcone5;
     private javax.swing.JLabel lblIcone6;
     private javax.swing.JLabel lblNome1;
-    private javax.swing.JLabel lblNome11;
     private javax.swing.JLabel lblNome2;
     private javax.swing.JLabel lblNome3;
     private javax.swing.JLabel lblNome4;
