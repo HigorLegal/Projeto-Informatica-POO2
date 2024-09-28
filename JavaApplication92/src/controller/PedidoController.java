@@ -15,7 +15,7 @@ import model.Pedido;
 
 public class PedidoController {
     
-    public List<Pedido> listarpedidos() {
+    public List<Pedido> listarpedidos(int id) {
         String sql = "select ped.pkpedido,pro.nome,pro.valor "
                 + "from tbpedido ped "
                 + "inner join tbproduto pro "
@@ -32,7 +32,7 @@ public class PedidoController {
         try {
             
             comando = gerenciador.prepararComando(sql);
-
+ comando.setInt(1, id);
             resultado = comando.executeQuery();
           
             while (resultado.next()) {
@@ -42,14 +42,11 @@ public class PedidoController {
 
 
 ped.setPkpedido(resultado.getInt("pkpedido"));
-ped.setPkpedido(resultado.getInt("pkpedido"));
+ped.setNomeP(resultado.getString("nome"));
+ped.setValorP(resultado.getDouble("valor"));
         
 
-     /*           private int pkpedido;
-    private int fkusuario;
-    private int fkproduto;
-    private String nomeP;
-    private double valorP;*/
+    
                 
 
 //adicionando o ped na lista
