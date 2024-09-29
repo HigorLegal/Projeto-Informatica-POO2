@@ -9,6 +9,7 @@ import controller.UsuarioController;
 import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import model.Produto;
 import model.Usuario;
 import static utils.Utils.RedirecionarIcon;
 
@@ -466,15 +467,15 @@ public class FrMain extends javax.swing.JFrame {
         );
 
         jMenuBar2.setBackground(new java.awt.Color(0, 0, 0));
-        jMenuBar2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true), "MENU BAR", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 18), new java.awt.Color(102, 0, 102))); // NOI18N
+        jMenuBar2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true), "MENU BAR", 0, 0, new java.awt.Font("Tahoma", 0, 18), new java.awt.Color(102, 0, 102))); // NOI18N
         jMenuBar2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jMenu3.setText("Cadastro");
-        jMenu3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMenu3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jMenuItem1.setBackground(new java.awt.Color(102, 255, 51));
         jMenuItem1.setText("usuario");
-        jMenuItem1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMenuItem1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenuItem1MouseClicked(evt);
@@ -488,7 +489,7 @@ public class FrMain extends javax.swing.JFrame {
         jMenu3.add(jMenuItem1);
 
         jMenuItem3.setText("sair");
-        jMenuItem3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMenuItem3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem3ActionPerformed(evt);
@@ -499,15 +500,14 @@ public class FrMain extends javax.swing.JFrame {
         jMenuBar2.add(jMenu3);
 
         jMenu4.setText("Consulta");
-        jMenu4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMenu4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jMenu4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenu4ActionPerformed(evt);
             }
         });
 
-        jMenuItem4.setText("consultar usuarios");
-        jMenuItem4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jMenuItem4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jMenuItem4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenuItem4MouseClicked(evt);
@@ -606,37 +606,44 @@ public class FrMain extends javax.swing.JFrame {
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         FrCarrinho a = new FrCarrinho(this, rootPaneCheckingEnabled);
+        a.setPkusuario(usu.getPkusuario());
         a.setVisible(true);
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void pnl1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl1MouseClicked
         FrProduto p = new FrProduto(this, rootPaneCheckingEnabled);
         p.setVisible(true);
+        p.setProduto(1);
     }//GEN-LAST:event_pnl1MouseClicked
 
     private void pnl2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl2MouseClicked
         FrProduto p = new FrProduto(this, rootPaneCheckingEnabled);
         p.setVisible(true);
+        p.setProduto(2);
     }//GEN-LAST:event_pnl2MouseClicked
 
     private void pnl3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl3MouseClicked
         FrProduto p = new FrProduto(this, rootPaneCheckingEnabled);
         p.setVisible(true);
+        p.setProduto(3);
     }//GEN-LAST:event_pnl3MouseClicked
 
     private void pnl4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl4MouseClicked
         FrProduto p = new FrProduto(this, rootPaneCheckingEnabled);
         p.setVisible(true);
+        p.setProduto(4);
     }//GEN-LAST:event_pnl4MouseClicked
 
     private void pnl5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl5MouseClicked
         FrProduto p = new FrProduto(this, rootPaneCheckingEnabled);
         p.setVisible(true);
+        p.setProduto(5);
     }//GEN-LAST:event_pnl5MouseClicked
 
     private void pnl6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl6MouseClicked
         FrProduto p = new FrProduto(this, rootPaneCheckingEnabled);
         p.setVisible(true);
+        p.setProduto(6);
     }//GEN-LAST:event_pnl6MouseClicked
 
     private void carregar() {

@@ -5,18 +5,25 @@
  */
 package views;
 
+import controller.ProdutoController;
+import model.Produto;
+
 /**
  *
  * @author S.lucas
  */
 public class FrProduto extends javax.swing.JDialog {
-
+public Produto pro;
     /**
      * Creates new form FrProduto
      */
     public FrProduto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+    }
+
+    public void setProduto(int a){
+    pro.setPkproduto(a);
     }
 
     /**
@@ -41,7 +48,7 @@ public class FrProduto extends javax.swing.JDialog {
         jPanel7 = new javax.swing.JPanel();
         lbFoto = new javax.swing.JLabel();
         lbpreco = new javax.swing.JLabel();
-        lbNomeP2 = new javax.swing.JLabel();
+        lbNome = new javax.swing.JLabel();
 
         lbNomeP1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbNomeP1.setText("produto nome");
@@ -61,7 +68,7 @@ public class FrProduto extends javax.swing.JDialog {
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/4470662_app_back_mobile_ui_ux_icon.png"))); // NOI18N
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton3MouseClicked(evt);
@@ -148,8 +155,8 @@ public class FrProduto extends javax.swing.JDialog {
         lbpreco.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbpreco.setText("produto valor");
 
-        lbNomeP2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbNomeP2.setText("produto nome");
+        lbNome.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbNome.setText("produto nome");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -168,7 +175,7 @@ public class FrProduto extends javax.swing.JDialog {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
-                            .addComponent(lbNomeP2))
+                            .addComponent(lbNome))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40))))
@@ -183,7 +190,7 @@ public class FrProduto extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(lbNomeP2)
+                                .addComponent(lbNome)
                                 .addGap(11, 11, 11)
                                 .addComponent(jLabel5))
                             .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -246,7 +253,14 @@ public class FrProduto extends javax.swing.JDialog {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
     }//GEN-LAST:event_jButton3ActionPerformed
+public void carregar(){
 
+    ProdutoController controller = new ProdutoController();
+  pro = controller.buscaPk(pro.getPkproduto());
+
+  lbNome.setText(pro.getNome());
+  lbpreco.setText("R$"+pro.getValor());
+}
     /**
      * @param args the command line arguments
      */
@@ -290,25 +304,19 @@ public class FrProduto extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JLabel lbAtivo;
     private javax.swing.JLabel lbFoto;
+    private javax.swing.JLabel lbNome;
     private javax.swing.JLabel lbNomeP1;
-    private javax.swing.JLabel lbNomeP2;
     private javax.swing.JLabel lbpreco;
     // End of variables declaration//GEN-END:variables
 }

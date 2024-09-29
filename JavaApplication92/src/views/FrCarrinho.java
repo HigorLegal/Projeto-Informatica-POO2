@@ -14,6 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Pedido;
+import model.Produto;
 import model.Usuario;
 import utils.Utils;
 
@@ -22,6 +23,8 @@ import utils.Utils;
  * @author S.lucas
  */
 public class FrCarrinho extends javax.swing.JDialog {
+
+    public Usuario usu;
 
     /**
      * Creates new form FrconUsuario
@@ -32,8 +35,8 @@ public class FrCarrinho extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
     }
 
-    FrCarrinho() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void setPkusuario(int a) {
+        usu.setPkusuario(a);
     }
 
     /**
@@ -96,7 +99,7 @@ public class FrCarrinho extends javax.swing.JDialog {
                 {null, null, null}
             },
             new String [] {
-                "codigo", "produto", "valorP"
+                "codigo", "produto", "valor"
             }
         ) {
             Class[] types = new Class [] {
@@ -119,7 +122,7 @@ public class FrCarrinho extends javax.swing.JDialog {
         BtnPesquisar.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         BtnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/2093656_seach_look_search_see_icon.png"))); // NOI18N
         BtnPesquisar.setText("Pesquisar");
-        BtnPesquisar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BtnPesquisar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         BtnPesquisar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BtnPesquisarMouseClicked(evt);
@@ -134,7 +137,7 @@ public class FrCarrinho extends javax.swing.JDialog {
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/4470662_app_back_mobile_ui_ux_icon.png"))); // NOI18N
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton2MouseClicked(evt);
@@ -148,7 +151,7 @@ public class FrCarrinho extends javax.swing.JDialog {
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/9036010_trash_bin_sharp_icon.png"))); // NOI18N
         jButton5.setText("Retirar do Carrinho");
-        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton5MouseClicked(evt);
@@ -250,11 +253,23 @@ public class FrCarrinho extends javax.swing.JDialog {
         ImageIcon Icon = new ImageIcon(caminhoImagem);
 
         this.setIconImage(Icon.getImage());
-         setTitle("Sistema de Carrinho do Usuario - Carrinho Pessoal");
+        setTitle("Sistema de Carrinho do Usuario - Carrinho Pessoal");
     }//GEN-LAST:event_formWindowOpened
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        if (grdPedido.getSelectedRow() != -1) {
 
+            int possicao = grdPedido.getSelectedRow();
+
+            String id = grdPedido.getValueAt(possicao, 0).toString();
+
+            PedidoController controller = new PedidoController();
+
+            controller.deletarPedido(Integer.parseInt(id));
+            
+            pesquisar();
+
+        }
     }//GEN-LAST:event_jButton5MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -273,8 +288,7 @@ public class FrCarrinho extends javax.swing.JDialog {
 
         PedidoController controller = new PedidoController();
 
-       
-List<Pedido> lista = controller.listarpedidos(1);
+        List<Pedido> lista = controller.listarpedidos(usu.getPkusuario());
 
         //loop para adicionar todos os usuarios encontrados
         for (Pedido ped : lista) {
@@ -283,12 +297,13 @@ List<Pedido> lista = controller.listarpedidos(1);
                 ped.getNomeP(),
                 ped.getValorP()
             };
-        
+
             //coloca o Array com os atributos do usuario na lista
             modelo.addRow(linha);
         }
 
     }
+
     /**
      * @param args the command line arguments
      */
