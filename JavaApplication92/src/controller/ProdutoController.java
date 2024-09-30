@@ -26,7 +26,7 @@ import model.Usuario;
 public class ProdutoController {
     
     public Produto buscaPk(int id) {
-        String sql = "SELECT nome,valor from tbproduto where pkproduto = ?";
+        String sql = "SELECT pkproduto,nome,valor from tbproduto where pkproduto = ?";
 
         GerenciadorConexao gerenciador = new GerenciadorConexao();
         PreparedStatement comando = null;
@@ -40,6 +40,8 @@ public class ProdutoController {
             resultado = comando.executeQuery();
             if (resultado.next()) {
 
+                
+                pro.setPkproduto(resultado.getInt("pkproduto"));
                 pro.setNome(resultado.getString("nome"));
                 pro.setValor(resultado.getDouble("valor"));
 

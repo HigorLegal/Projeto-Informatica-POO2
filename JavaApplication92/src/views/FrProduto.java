@@ -5,8 +5,13 @@
  */
 package views;
 
+import controller.PedidoController;
 import controller.ProdutoController;
+import java.net.URL;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import model.Produto;
+import model.Usuario;
 
 /**
  *
@@ -14,16 +19,21 @@ import model.Produto;
  */
 public class FrProduto extends javax.swing.JDialog {
 public Produto pro;
+public Usuario usu;
     /**
      * Creates new form FrProduto
      */
     public FrProduto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
-    public void setProduto(int a){
-    pro.setPkproduto(a);
+    public void setProduto(Produto a){
+    pro= a;
+    }
+    public void setUsuario(Usuario a){
+    usu = a;
     }
 
     /**
@@ -45,8 +55,6 @@ public Produto pro;
         jLabel5 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         lbAtivo = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        lbFoto = new javax.swing.JLabel();
         lbpreco = new javax.swing.JLabel();
         lbNome = new javax.swing.JLabel();
 
@@ -54,6 +62,11 @@ public Produto pro;
         lbNomeP1.setText("produto nome");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(102, 0, 153));
 
@@ -114,6 +127,11 @@ public Produto pro;
         jLabel5.setText("valor");
 
         jPanel6.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel6MouseClicked(evt);
+            }
+        });
 
         lbAtivo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbAtivo.setForeground(new java.awt.Color(255, 255, 255));
@@ -136,22 +154,6 @@ public Produto pro;
                 .addContainerGap())
         );
 
-        jPanel7.setBackground(new java.awt.Color(0, 0, 0));
-
-        lbFoto.setBackground(new java.awt.Color(0, 0, 0));
-        lbFoto.setForeground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbFoto, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbFoto, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-        );
-
         lbpreco.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbpreco.setText("produto valor");
 
@@ -163,41 +165,38 @@ public Produto pro;
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(73, 73, 73)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbpreco)
-                            .addComponent(jLabel2))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
                             .addComponent(lbNome))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40))))
+                        .addGap(40, 40, 40))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbpreco)
+                            .addComponent(jLabel2))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jLabel2)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addGap(17, 17, 17)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(lbNome)
-                                .addGap(11, 11, 11)
-                                .addComponent(jLabel5))
-                            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(8, 8, 8)
-                        .addComponent(lbpreco))
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(lbNome)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel5)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbpreco)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -253,13 +252,38 @@ public Produto pro;
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+      
+        URL caminhoImagem = getClass().getResource("/images/logo.png");
+
+        ImageIcon Icon = new ImageIcon(caminhoImagem);
+
+        this.setIconImage(Icon.getImage());
+        setTitle("Sistema de Carrinho do Usuario -  produto");
+        carregar();
+    }//GEN-LAST:event_formWindowOpened
+
+    private void jPanel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel6MouseClicked
+      
+        PedidoController controller = new  PedidoController();
+      
+        if(controller.criarPedido(pro.getPkproduto(),usu.getPkusuario())){
+        JOptionPane.showMessageDialog(null,"produto adicionado ao carrinho");
+        }
+
+        
+    }//GEN-LAST:event_jPanel6MouseClicked
 public void carregar(){
 
     ProdutoController controller = new ProdutoController();
+    
   pro = controller.buscaPk(pro.getPkproduto());
 
   lbNome.setText(pro.getNome());
   lbpreco.setText("R$"+pro.getValor());
+ 
+  
 }
     /**
      * @param args the command line arguments
@@ -312,9 +336,7 @@ public void carregar(){
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JLabel lbAtivo;
-    private javax.swing.JLabel lbFoto;
     private javax.swing.JLabel lbNome;
     private javax.swing.JLabel lbNomeP1;
     private javax.swing.JLabel lbpreco;

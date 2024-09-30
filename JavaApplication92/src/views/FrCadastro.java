@@ -513,9 +513,9 @@ this.dispose();
    UsuarioController controller = new UsuarioController();
    
    if(controller.criarUsuario(usu)){
-       JOptionPane.showMessageDialog(null,"usuario : "+ usu.getNome() + "  foi adicionado com suscesso!!");
+       JOptionPane.showMessageDialog(null,"usuario : "+ usu.getNome() + "  foi adicionado com sucesso!!");
    this.dispose();
-        new FrAutenticacao().setVisible(true);
+        
    }else{
    
        JOptionPane.showMessageDialog(null,"erro ao criar usuario");
@@ -526,7 +526,11 @@ this.dispose();
     
     
     public boolean VerificarCampos() {
-
+if(lbFoto.getIcon() == null){
+            JOptionPane.showMessageDialog(null, "selecione uma foto!! ");
+return false;
+    
+}
         //nome
         if (txtNome.getText().equals("")) {
             JOptionPane.showMessageDialog(null, " O nome nao pode esta em branco !! ");
@@ -558,11 +562,7 @@ this.dispose();
             JOptionPane.showMessageDialog(null, " A senhas nao sao iguais!! ");
             return false;
         }
-if(lbFoto == null){
-            JOptionPane.showMessageDialog(null, "selecione uma foto!! ");
 
-    return false;
-}
         
         return true;
         // return false;

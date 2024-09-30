@@ -35,8 +35,8 @@ public class FrCarrinho extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
     }
 
-    public void setPkusuario(int a) {
-        usu.setPkusuario(a);
+    public void setUsuario(Usuario a) {
+        usu=a;
     }
 
     /**
@@ -58,6 +58,8 @@ public class FrCarrinho extends javax.swing.JDialog {
         BtnPesquisar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        lbValorTotal = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         jLabel2.setText("jLabel2");
 
@@ -158,6 +160,12 @@ public class FrCarrinho extends javax.swing.JDialog {
             }
         });
 
+        lbValorTotal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbValorTotal.setText("R$0");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setText("valor Total:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -166,16 +174,23 @@ public class FrCarrinho extends javax.swing.JDialog {
                 .addGap(90, 90, 90)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 92, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(152, 152, 152)
-                .addComponent(BtnPesquisar)
-                .addGap(108, 108, 108)
-                .addComponent(jButton5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(232, 232, 232))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(152, 152, 152)
+                        .addComponent(BtnPesquisar)
+                        .addGap(108, 108, 108)
+                        .addComponent(jButton5))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(275, 275, 275)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbValorTotal)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addContainerGap()
@@ -193,12 +208,16 @@ public class FrCarrinho extends javax.swing.JDialog {
                     .addComponent(BtnPesquisar))
                 .addGap(36, 36, 36)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbValorTotal)
+                    .addComponent(jLabel3))
+                .addContainerGap(23, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(313, Short.MAX_VALUE)))
+                    .addContainerGap(348, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -214,8 +233,8 @@ public class FrCarrinho extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -290,18 +309,20 @@ public class FrCarrinho extends javax.swing.JDialog {
 
         List<Pedido> lista = controller.listarpedidos(usu.getPkusuario());
 
-        //loop para adicionar todos os usuarios encontrados
+       double  a = 0;
+        //loop  para adicionar todos os usuarios encontrados
         for (Pedido ped : lista) {
             Object[] linha = {
                 ped.getPkpedido(),
                 ped.getNomeP(),
                 ped.getValorP()
             };
-
+a+=ped.getValorP();
             //coloca o Array com os atributos do usuario na lista
             modelo.addRow(linha);
+            
         }
-
+lbValorTotal.setText("R$"+a);
     }
 
     /**
@@ -355,8 +376,10 @@ public class FrCarrinho extends javax.swing.JDialog {
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbValorTotal;
     // End of variables declaration//GEN-END:variables
 }

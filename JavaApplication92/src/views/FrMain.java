@@ -79,7 +79,6 @@ public class FrMain extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
 
         jMenu1.setText("jMenu1");
@@ -467,7 +466,7 @@ public class FrMain extends javax.swing.JFrame {
         );
 
         jMenuBar2.setBackground(new java.awt.Color(0, 0, 0));
-        jMenuBar2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true), "MENU BAR", 0, 0, new java.awt.Font("Tahoma", 0, 18), new java.awt.Color(102, 0, 102))); // NOI18N
+        jMenuBar2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true), "MENU BAR", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 18), new java.awt.Color(102, 0, 102))); // NOI18N
         jMenuBar2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jMenu3.setText("Cadastro");
@@ -506,20 +505,6 @@ public class FrMain extends javax.swing.JFrame {
                 jMenu4ActionPerformed(evt);
             }
         });
-
-        jMenuItem4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jMenuItem4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenuItem4MouseClicked(evt);
-            }
-        });
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
-            }
-        });
-        jMenu4.add(jMenuItem4);
-
         jMenuBar2.add(jMenu4);
 
         jMenu5.setText("Sobre");
@@ -585,19 +570,9 @@ public class FrMain extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jMenuItem1MouseClicked
 
-    private void jMenuItem4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem4MouseClicked
-
-
-    }//GEN-LAST:event_jMenuItem4MouseClicked
-
     private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu4ActionPerformed
 
     }//GEN-LAST:event_jMenu4ActionPerformed
-
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        FrCarrinho a = new FrCarrinho(this, rootPaneCheckingEnabled);
-        a.setVisible(true);
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenu5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu5MouseClicked
         FrSobre a = new FrSobre(this, rootPaneCheckingEnabled);
@@ -606,44 +581,99 @@ public class FrMain extends javax.swing.JFrame {
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         FrCarrinho a = new FrCarrinho(this, rootPaneCheckingEnabled);
-        a.setPkusuario(usu.getPkusuario());
+
+            usu.setPkusuario( usu.getPkusuario());
+            
+            a.setUsuario(usu);
+      
         a.setVisible(true);
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void pnl1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl1MouseClicked
         FrProduto p = new FrProduto(this, rootPaneCheckingEnabled);
+       
+
+            usu.setPkusuario( usu.getPkusuario());
+            
+            p.setUsuario(usu);
+            Produto pro = new Produto();
+        pro.setPkproduto(1);     
+        
+        pro.setImage(lblIcone1.getIcon());
+        
+        p.setProduto(pro);        
+        
         p.setVisible(true);
-        p.setProduto(1);
     }//GEN-LAST:event_pnl1MouseClicked
 
     private void pnl2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl2MouseClicked
         FrProduto p = new FrProduto(this, rootPaneCheckingEnabled);
+      
+
+            usu.setPkusuario( usu.getPkusuario());
+            
+            p.setUsuario(usu);
+       Produto pro = new Produto();
+        pro.setPkproduto(2);     
+        
+        p.setProduto(pro); 
         p.setVisible(true);
-        p.setProduto(2);
     }//GEN-LAST:event_pnl2MouseClicked
 
     private void pnl3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl3MouseClicked
         FrProduto p = new FrProduto(this, rootPaneCheckingEnabled);
+        
+
+            usu.setPkusuario( usu.getPkusuario());
+            
+            p.setUsuario(usu);
+        Produto pro = new Produto();
+        pro.setPkproduto(3);     
+        
+        p.setProduto(pro); 
         p.setVisible(true);
-        p.setProduto(3);
     }//GEN-LAST:event_pnl3MouseClicked
 
     private void pnl4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl4MouseClicked
         FrProduto p = new FrProduto(this, rootPaneCheckingEnabled);
+         
+
+            usu.setPkusuario( usu.getPkusuario());
+            
+            p.setUsuario(usu);
+Produto pro = new Produto();
+        pro.setPkproduto(4);     
+        
+        p.setProduto(pro); 
         p.setVisible(true);
-        p.setProduto(4);
     }//GEN-LAST:event_pnl4MouseClicked
 
     private void pnl5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl5MouseClicked
         FrProduto p = new FrProduto(this, rootPaneCheckingEnabled);
+        
+
+            usu.setPkusuario( usu.getPkusuario());
+            
+            p.setUsuario(usu);
+     Produto pro = new Produto();
+        pro.setPkproduto(5);     
+        
+        p.setProduto(pro); 
         p.setVisible(true);
-        p.setProduto(5);
     }//GEN-LAST:event_pnl5MouseClicked
 
     private void pnl6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnl6MouseClicked
         FrProduto p = new FrProduto(this, rootPaneCheckingEnabled);
+       
+
+            usu.setPkusuario( usu.getPkusuario());
+            
+            p.setUsuario(usu);
+   Produto pro = new Produto();
+        pro.setPkproduto(6);     
+        
+        p.setProduto(pro); 
         p.setVisible(true);
-        p.setProduto(6);
     }//GEN-LAST:event_pnl6MouseClicked
 
     private void carregar() {
@@ -709,7 +739,6 @@ public class FrMain extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lbNome;

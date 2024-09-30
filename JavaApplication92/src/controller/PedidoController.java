@@ -37,18 +37,12 @@ public class PedidoController {
           
             while (resultado.next()) {
 
-              
                 Pedido ped = new Pedido();
-
 
 ped.setPkpedido(resultado.getInt("pkpedido"));
 ped.setNomeP(resultado.getString("nome"));
 ped.setValorP(resultado.getDouble("valor"));
         
-
-    
-                
-
 //adicionando o ped na lista
                 listaPedidos.add(ped);
 
@@ -96,5 +90,34 @@ ped.setValorP(resultado.getDouble("valor"));
         }
         return false;
     }
+     public boolean criarPedido(int produto,int usuario) {
+        String sql = "insert into tbpedido(fkusuario,fkproduto)value(?,?);";
+
+        GerenciadorConexao gerenciador = new GerenciadorConexao();
+        PreparedStatement comando = null;
+
+        try {
+            comando = gerenciador.prepararComando(sql);
+
+            comando.setInt(1, usuario);
+            comando.setInt(2, produto);
+
+            comando.executeUpdate();
+
+            return true;
+
+        } catch (SQLException ex) {
+            //mostra o erro
+            JOptionPane.showMessageDialog(null, "erro ao adicionar " + ex);
+        } finally {
+            //fecha conxao
+            gerenciador.fecharConexao(comando);
+        }
+        return false;
+    }
+     
+     
+     
+     
 }
 
