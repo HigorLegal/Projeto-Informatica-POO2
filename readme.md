@@ -1,4 +1,4 @@
-# loja de roupa
+# Sistema de compra de informatica
 
 ## Integrantes
 
@@ -18,25 +18,21 @@
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 
 ## Descrição do Projeto
-Este projeto é um site de venda de roupas femininas que permite aos usuários vizualizar e comprar roupas. O nosso objetivo é empoderar mulheres através da moda, oferecendo peças que não apenas realcem sua beleza exterior, mas também celebrem sua individualidade e estilo único. 
+Este projeto é um aplicativo de venda de produtos eletronicos que contem 
+um menu de login, de refistro, do catalogo, do carrinho e das informaçoes do usuario.
 
 ## Funcionalidades Implementadas 
-- **Slider**
-- **Cronometro regressivo**
-- **menu hamburguer**
-- **responsividade para mobile e pc**
+
+- **criaçao, e login de usuario no banco de dados**
+- **ver invormaçoes do usuario registrado**
+- **adiçao de produtos no carrinho**
+- **um carrinho que carrega todos os produtos que o usuario adicionar**
+- **capacidade de remover os produtos do carrinho e poder ver o total que sera pago**
 
 ## IDEs e Editores utilizados
 <!-- Badge Visual Studio Code -->
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 
-## Tecnologias Utilizadas 
-<!-- Badge HTML5 -->
-- ![HTML5](https://img.shields.io/badge/html5-%2523E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
-<!-- Badge CSS3 -->
-- ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
-<!-- Badge JavaScript -->
-- ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 <!-- Badge GitHub Pages -->
 - ![Github Pages](https://img.shields.io/badge/github%20pages-121013?style=for-the-badge&logo=github&logoColor=white)
 
